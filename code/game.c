@@ -152,8 +152,9 @@ game_status game_run(game *game_ptr) {
  * 
 */
 void game_display_instruction(void) {
-    type_writing("Chon dap an cho cau tra loi hien ra tren man hinh", 1, 3);
-    type_writing("\nSau do se hien thi ket qua va neu dung thi se qua cau hoi tiep theo", 1, 3);
+    printf("Display instruction!\n");
+    printf("Press any key to start game ... \n");
+    getch(); 
 }
 
 /************************************
@@ -164,8 +165,8 @@ void game_display_instruction(void) {
 void game_display_reward(game *game_ptr) {
     clrscr(); 
     printf("So thoi gian choi gianh them duoc la %d phut\n", (*game_ptr).gamer_reward * 3);
-    printf("Press any key to exit game ... "); 
-    int ch = getch(); 
+    printf("Press any key to exit game ...\n"); 
+    getch(); 
 }
 
 #ifdef DEBUG_P7
@@ -173,7 +174,7 @@ void game_display_reward(game *game_ptr) {
 game quiz_game; 
 
 int main(void) {
-    game_init(&quiz_game);
+    game_init(&quiz_game); 
 
     game_display_instruction(); 
 

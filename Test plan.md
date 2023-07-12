@@ -1,22 +1,31 @@
-# test plan cho mô hình theo phong cách bottom up 
+# test plan top-down 
 
-tức là test thử mô hình với các bài test chi tiết nhỏ từ file nhỏ nhất 
+<!-- Đây là cái mà mình nên tập trung vào nhất ở thời điểm hiện tại 
+        để hiểu về quy trình lập trình 
 
-1. file: question.c - nên hiện ra câu hỏi "Nguyễn Thanh Tùng thích chơi game gì nhất?" với 4 câu trả lời "A. freefire" "B. genshin impact" "C. aspalt 8" "D. gunny" 
- 
-2. file: question.c - nên hiện ra như ở dưới: 
-`Nguyen Thanh Tung thich nhat game gi?`
-`A. Freefire`
-`B. Genshin Impact`
-`C. Aspalt 8`
-`D. Gunny`
+ -->
 
-và sau đó nhấn phím c thì hiện ra màn hình:
-`Correct!!!`
 
-Còn nếu nhấn phím a, b hoặc d thì nhấn phím: 
-`Incorrect!`
 
-Sau đó chương trình nên đứng yên trong vòng 3s rồi kết thúc chương trình 
+1. Khi mới bắt đầu chương trình 
+- nên hiện ra màn hình hướng dẫn chơi
 
-3. file
+2. Khi mới bắt đầu chương trình  
+- nên hiện ra màn hình hướng dẫn chơi
+- nhấn phím bất kì thì nên xóa màn hình và hiển thị câu hỏi số 1
+
+3. Khi mới bắt đầu chương trình 
+- nên hiện ra màn hình hướng dẫn chơi
+- nhấn phím bất kì thì nên xóa màn hình và hiển thị câu hỏi số 1
+- nhấn phím b trên bàn phím thì nên hiển thi "Incorrect!!!" 
+
+
+
+
+
+3. Khi mới bắt đầu chương trình
+- hiện ra màn hình hướng dẫn chơi
+- nhấn phím bất kì để vào chơi
+- hiện ra câu hỏi số 1
+- nhấn phím a
+= kết quả nên hiện ra là "Correct!!!" ở ngay dưới câu hỏi
