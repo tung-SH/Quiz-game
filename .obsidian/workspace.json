@@ -23,14 +23,11 @@
             "id": "836d826011449715",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "sơ đồ file.canvas",
-                "viewState": {
-                  "x": -184.70478057861328,
-                  "y": -25,
-                  "zoom": 0
-                }
+                "file": "test plan.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -101,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "sơ đồ file.canvas",
+                "file": "test plan.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "sơ đồ file.canvas",
+                "file": "test plan.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -141,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "sơ đồ file.canvas"
+                "file": "test plan.md"
               }
             }
           }
@@ -164,6 +161,7 @@
   },
   "active": "836d826011449715",
   "lastOpenFiles": [
+    "sơ đồ file.canvas",
     "code/main.c",
     "code/menu.c",
     "code/game.c",
@@ -177,8 +175,6 @@
     "code/header/setting_function.h",
     "code/header/random.c",
     "code/header/interactive.c",
-    "code/header/input_file.c",
-    "sơ đồ file.canvas",
     "Preliminary specification.md"
   ]
 }

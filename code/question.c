@@ -37,7 +37,7 @@ const int NUM_ANSWER = 4; /* NUMBER OF ANSWER OF A QUESTION */
 struct question {
     char* content; /* content of the question */
     char** answers; /* 4 possible answers of the question */
-    int order_of_right_answer; /* order of the right answer */
+    char right_answer; /* order of the right answer */
 }; 
 
 typedef struct question question; 
@@ -48,13 +48,13 @@ typedef struct question question;
  * 
  * 
 */
-question question_template(const char* contentV, char** answersV, int order_of_right_answerV) {
+question question_template(const char* contentV, char** answersV, char right_answerV) {
     question result; 
 
     result.content = (char*)malloc(MAX_LENGTH); 
     strcpy(result.content, contentV); 
     result.answers = answersV; 
-    result.order_of_right_answer = order_of_right_answerV; 
+    result.right_answer = right_answerV; 
 
     #ifdef DEBUG_F20
         printf("Question template:\n%s\nA. %s\nB. %s\nC. %s\nD. %s\n", result.content, result.answers[0], result.answers[1], result.answers[2], result.answers[3]); 
@@ -75,7 +75,7 @@ char *question_to_string(question questionV) {
     char *result; 
 
     result = (char*)malloc(MAX_LENGTH); 
-    sprintf(result, "%s\nA. %s\nB. %s\nC. %s\nD. %s\n", questionV.content, questionV.answers[1 -1], questionV.answers[2 -1], questionV.answers[3 -1], questionV.answers[4 -1]);
+    sprintf(result, "%s\nA. %s\nB. %s\nC. %s\nD. %s\nRight answer is %c\n", questionV.content, questionV.answers[1 -1], questionV.answers[2 -1], questionV.answers[3 -1], questionV.answers[4 -1], TO_UPPER(questionV.right_answer));
 
     #ifdef DEBUG_F20
         printf("Question to string:\n%s", result); 
@@ -105,11 +105,11 @@ question question_template_by_file_line(const char *file_name, int line) {
     for (int i = 1; i <= 4; ++i) {
         answers_mid[i -1] = (char*)malloc(MAX_LENGTH); /* delcare 4 each answer string */
     }
-    int order_of_right_answer_mid; /* middle order of right answer */
+    char right_answer_mid; /* middle order of right answer */
 
-    sscanf(content_line_file(file_name, line), "%[^,],%[^,],%[^,],%[^,],%[^,],%d", content_mid, answers_mid[1 -1], answers_mid[2 -1], answers_mid[3 -1], answers_mid[4 -1], &order_of_right_answer_mid);
+    sscanf(content_line_file(file_name, line), "%[^,],%[^,],%[^,],%[^,],%[^,],%c", content_mid, answers_mid[1 -1], answers_mid[2 -1], answers_mid[3 -1], answers_mid[4 -1], &right_answer_mid);
 
-    result = question_template(content_mid, answers_mid, order_of_right_answer_mid); 
+    result = question_template(content_mid, answers_mid, right_answer_mid); 
 
     #ifdef DEBUG_F19
         printf("Question template by file:\n%s", question_to_string(result));
@@ -129,7 +129,10 @@ FILE *f; /* file pointer */
 int main(void) {
     question myQuestion; 
 
-    myQuestion = question_template_by_file_line(FILE_NAME, 2);
+    for (int i = 2; i <= 16; ++i) { /* from first question value to 15th one */
+        printf("\nQuestion %dth:\n", i - 1); 
+        myQuestion = question_template_by_file_line(FILE_NAME, i); 
+    }
 
     
 }

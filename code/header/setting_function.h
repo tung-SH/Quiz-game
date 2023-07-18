@@ -47,6 +47,6 @@
 
 // #define DEBUG_F18
 
-// #define DEBUG_F19
+#define DEBUG_F19
 
 // #define DEBUG_F20

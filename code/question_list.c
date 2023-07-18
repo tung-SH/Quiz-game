@@ -101,100 +101,57 @@ int reward; /* reward for user */
 int i; /* index for question in question bank */
 
 int main(void) {
+    /**********************************
+     * 1. khởi tạo ngân hàng câu hỏi 
+    */
     bank = question_list_template_by_file(FILE_NAME);
 
-    reward = 0; /* initialize the reward */
+    /************************************************************
+     * 2. khởi tạo chỉ số câu hỏi, khởi tạo giá trị phần thưởng 
+     * 
+    */
+    reward = 0; 
     i = 1; 
 
     while (1) {
-        clrscr(); 
+        if (i > 15) { /* nếu win game */
+            break; /* thoát game */
+        }
+
+        clrscr(); /* xóa màn hình */
+
+        /***********************************************
+        * 3. in ra màn hình câu hỏi theo chỉ số 
+        */
         printf("%s", question_to_string(bank.questions[i -1]));
 
-        choice = getch();
-        choice = TO_LOWER(choice);
-
-        if (bank.questions[i -1].order_of_right_answer == 1) {
-            if (choice == 'a') {
-                printf("Correct");
-                wait_1ms(5000);
-                ++reward; 
-                ++i;  
-            } else if (choice == 'b') {
-                printf("Incorrect");
-                wait_1ms(5000);
-                break;
-            } else if (choice == 'c') {
-                printf("Incorrect");
-                wait_1ms(5000);
-                break;
-            } else if (choice == 'd') {
-                printf("Incorrect");
-                wait_1ms(5000);
-                break;
-            } 
-        } else if (bank.questions[i -1].order_of_right_answer == 2) {
-            if (choice == 'b') {
-                printf("Correct");
-                wait_1ms(5000);
-                ++reward; 
-                ++i;  
-            } else if (choice == 'a') {
-                printf("Incorrect");
-                wait_1ms(5000);
-                break;
-            } else if (choice == 'c') {
-                printf("Incorrect");
-                wait_1ms(5000);
-                break;
-            } else if (choice == 'd') {
-                printf("Incorrect");
-                wait_1ms(5000);
-                break;
-            } 
-        } else if (bank.questions[i -1].order_of_right_answer == 3) {
-            if (choice == 'c') {
-                printf("Correct");
-                wait_1ms(5000);
-                ++reward; 
-                ++i;  
-            } else if (choice == 'b') {
-                printf("Incorrect");
-                wait_1ms(5000);
-                break;
-            } else if (choice == 'a') {
-                printf("Incorrect");
-                wait_1ms(5000);
-                break;
-            } else if (choice == 'd') {
-                printf("Incorrect");
-                wait_1ms(5000);
-                break;
-            } 
-        } else if (bank.questions[i -1].order_of_right_answer == 4) {
-            if (choice == 'd') {
-                printf("Correct");
-                wait_1ms(5000);
-                ++reward; 
-                ++i;  
-            } else if (choice == 'b') {
-                printf("Incorrect");
-                wait_1ms(5000);
-                break;
-            } else if (choice == 'c') {
-                printf("Incorrect");
-                wait_1ms(5000);
-                break;
-            } else if (choice == 'a') {
-                printf("Incorrect");
-                wait_1ms(5000);
-                break;
-            } 
-        }
+        int choice = getch(); /* chờ lấy giá trị phím nhấn tương đương câu trả lời của người dùng */
+        choice = TO_LOWER(choice); /* 1 giá trị đồng nhất trong trường hợp người dùng bật caplock*/
         
-    }
+        if (choice == bank.questions[i -1].right_answer) { /* nếu người dùng chọn câu trả lời đúng */
+            printf("Correct!!!"); 
+            getch(); 
+            ++i; /* qua câu hỏi tiếp theo */
 
-    clrscr(); 
-    printf("The reward of gamer is %d minutes", reward * 5); 
+            /******************
+             * điều chỉnh giá trị phần thưởng 
+             * 
+            */
+            if (1 <= i && i <= 5) {
+                reward = i * 3; 
+            } else if (i <= 10) {
+                reward = i * 4;
+            } else {
+                reward = i * 5; 
+            }
+        } else if (choice == 'a' || choice == 'b' || choice == 'c' || choice == 'd') { /* nếu người dùng chọn câu trả lời sai */
+            printf("Incorrect!!!");
+            break; /* thoát game */
+        }
+
+    }
+    clrscr(); /* xóa màn hình */
+    printf("So phut choi game la %d phut", reward); 
     getch(); 
     
 

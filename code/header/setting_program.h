@@ -25,6 +25,6 @@
 
 #define DEBUG_P7
 
-// #define DEBUG_P8
+#define DEBUG_P8
 
 // #define DEBUG_P9
